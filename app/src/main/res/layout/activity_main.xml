@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/map_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/north_up"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/compass_bright"
+            android:elevation="2dp"
+            android:shadowColor="#00FFFFFF"
+            android:stateListAnimator="@null"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_button_linear_layout" />
+
+
+        <Button
+            android:id="@+id/sat_map_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:elevation="2dp"
+            android:foreground="@drawable/ic_satellite"
+            android:background="@drawable/round_button_off"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/gps_status_image_view"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/traffic_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="2dp"
+            android:foreground="@drawable/ic_congestion"
+            android:background="@drawable/round_button_off"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/sat_map_button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#00000000"
+            android:foreground="@drawable/ic_tools_and_utensils"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_button_linear_layout" />
+
+        <ImageView
+            android:id="@+id/gps_status_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="2dp"
+            android:tint="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_gps_off_white_24dp" />
+
+        <ImageView
+            android:id="@+id/signpostImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/junctionImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:elevation="2dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signpostImageView" />
+
+        <ImageView
+            android:id="@+id/sign_imageView_1"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:elevation="2dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/map_view" />
+
+        <ImageView
+            android:id="@+id/sign_imageView_2"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:elevation="2dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_imageView_1" />
+
+        <ImageView
+            android:id="@+id/sign_imageView_3"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:elevation="2dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_imageView_2" />
+
+        <LinearLayout
+            android:id="@+id/distance_marker_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_button_linear_layout">
+
+            <ImageView
+                android:id="@+id/distance_marker_freeway_id"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="2dp"
+                android:alpha="0.8"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/distance_marker_distance_value"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:alpha="0.8"
+                android:background="#FF064627"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/top_button_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:elevation="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/map_view"
+            app:layout_constraintStart_toStartOf="@id/map_view"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/clear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:elevation="2dp"
+                android:text="@string/reset"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/startGuidance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:elevation="2dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/map_view"
+            app:layout_constraintEnd_toEndOf="@id/map_view"
+            app:layout_constraintTop_toTopOf="@id/map_view"
+            app:layout_constraintVertical_bias="0.5">
+
+            <Button
+                android:id="@+id/zoom_in"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:foreground="@drawable/ic_plus"
+                android:paddingBottom="4dp"/>
+
+            <Button
+                android:id="@+id/zoom_out"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:foreground="@drawable/ic_minus"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_bar_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="80dp"
+            android:elevation="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vehicleTypeTableLayout">
+
+            <EditText
+                android:id="@+id/search_input_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="@drawable/edittext_background"
+                android:elevation="10dp"
+                android:hint="@string/search_places"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:shadowColor="#FF5722"
+                android:singleLine="false" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="8dp"
+            android:background="#00C7C7C7"
+            android:elevation="20dp"
+            android:max="100"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/map_view"
+            app:layout_constraintEnd_toEndOf="@id/map_view"
+            app:layout_constraintStart_toStartOf="@id/map_view"
+            app:layout_constraintTop_toTopOf="@id/map_view" />
+
+
+        <TableLayout
+            android:id="@+id/vehicleTypeTableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="160dp"
+            android:elevation="2dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_button_linear_layout">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/car_route"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_red_dark"
+                    android:foreground="@drawable/ic_directions_car_white_32dp"
+                    android:padding="4dp"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/truck_route"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:foreground="@drawable/ic_truck_24"
+                    android:padding="4dp"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/scooter_route"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_dark"
+                    android:foreground="@drawable/ic_motorcycle_white_32dp"
+                    android:padding="4dp"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/bike_route"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_blue_dark"
+                    android:foreground="@drawable/ic_directions_bike_white_32dp"
+                    android:padding="4dp"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/peds_route"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_purple"
+                    android:foreground="@drawable/ic_directions_run_white_32dp"
+                    android:padding="4dp"
+                    android:visibility="invisible" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/guidance_speed_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:elevation="2dp"
+            android:shadowColor="@color/white"
+            android:shadowRadius="16"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toStartOf="@id/speed_label_text_view"
+            app:layout_constraintEnd_toEndOf="@id/map_view"
+            app:layout_constraintBottom_toTopOf="@id/traffic_button"/>
+
+        <TextView
+            android:id="@+id/speed_label_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:shadowColor="@color/white"
+            android:shadowRadius="16"
+            android:text="@string/kph"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/guidance_speed_view"
+            app:layout_constraintEnd_toEndOf="@id/map_view"/>
+
+        <com.here.sdk.mapview.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/top_button_linear_layout">
+        </com.here.sdk.mapview.MapView>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
